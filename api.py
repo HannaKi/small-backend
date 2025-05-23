@@ -43,6 +43,4 @@ def get_filtered_geo(route: int, dir: int):
         (gdf["route"] == route) &
         (gdf["dir"] == dir)
     ]
-    simplified = filtered.copy()
-    simplified["geometry"] = simplified["geometry"].simplify(0.001)
-    return json.loads(simplified.to_json())
+    return json.loads(filtered.to_json())
