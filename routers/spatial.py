@@ -3,6 +3,7 @@
 from fastapi import APIRouter
 import geopandas as gpd
 from data import load_coordinate_data
+import json
 
 router = APIRouter()
 
@@ -22,5 +23,5 @@ def get_filtered_geo(route: int, dir: int): # NOTE the route will be str
         (gdf["route"] == route) &
         (gdf["dir"] == dir)
     ]
-    # return json.loads(filtered.to_json())
-    return filtered.__geo_interface__
+    return json.loads(filtered.to_json())
+    # return filtered.__geo_interface__
